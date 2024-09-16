@@ -1,0 +1,18 @@
+   <h1 style="text-align: center;">Products</h1>
+   <div class="cards-container">
+       @for (product of productsArray ; track $index) {
+           <div class="card">
+               <img [src]="product.image" alt="{{product.name}}" />
+            <h2>{{product.title}}</h2>
+                <div class="price">               
+                <p>{{product.price}}$</p>
+                </div>
+                <p class="category">{{product.category}}</p>    
+                <div class="rating">
+                <p>Rating: {{product.rating.rate}}</p>
+                </div>
+               <br />
+               <a [routerLink]="['/products', product.id]" class="view-details">View Product Details</a>  
+           </div>
+       }
+ 

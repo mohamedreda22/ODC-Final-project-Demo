@@ -1,0 +1,14 @@
+<h1>Product Details</h1>
+  <div class="product-container">
+    <div class="product">
+      <img [src]="product.image" alt="{{product.title}}" />
+      <h2>{{product.title}}</h2>
+      <p>{{product.price}}$</p>
+      <p class="description">{{product.description.slice(0, 50)}}</p>
+      <p class="category">Category: {{product.category}}</p>
+      <div class="rating">
+        <p>Rating: {{product.rating.rate}}</p>
+      </div>
+      <a href="products">Back to HomePage</a>
+    </div>
+  </div>
