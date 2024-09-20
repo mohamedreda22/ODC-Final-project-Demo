@@ -1,3 +1,32 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #AD343E;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    transition: opacity 0.3s;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #c0392b;
+}
+
 .home-container{
     background-image: url("/Mask group.png");
     background-size:cover;
@@ -136,6 +165,7 @@
     align-items: center;
     padding: 50px 0;
     background-color: #f9f9f7;
+    height: 100vh;
 }
 
 .visit-us-container {
@@ -143,6 +173,7 @@
     max-width: 1200px;
     width: 100%;
     gap: 20px;
+    
 }
 
 .visit-us-image img {
@@ -244,33 +275,42 @@
 .events-services {
     text-align: center;
     padding: 60px 0;
-    background-color: #f9f9f7;
+    background-color: #ffffff;
+    height: 100vh;
 }
 
 .events-services h2 {
-    font-size: 28px;
+    font-size: 30px;
     margin-bottom: 40px;
-    font-weight: bold;
+    font-weight: 600;
     font-family: 'Playfair Display', serif;
+    color: #2C2F24;
+    text-align: left;
+    margin-left: 80px;
+    max-width: 350px;
     
 }
 
 .services-container {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .service-item {
-    flex: 1;
-    max-width: 250px;
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    cursor: pointer;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 20px;
-    transition: transform 0.3s ease;
+    padding: 10px;
+    transition: 0.3s;
+    height: 335px;
+    width: 266px;
 }
 
 
@@ -285,16 +325,239 @@
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+    text-align: left;
 }
 
 .service-item p {
-    font-size: 14px;
+    font-size: 12px;
     color: #555;
+    text-align: left;
 }
 
 .service-item:hover {
     transform: scale(1.05);
 }
+.fastest-delivery-container {
+    display: flex;
+    gap: 20px;
+}
+
+.fastest-delivery-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    
+}
+
+.image-item img {
+    border-radius: 10px;
+    height: 600px;
+    width: 431px;
+    scale: 0.8;
+    
+    
+}
+
+.fastest-delivery-text {
+    max-width: 400px;
+    position: relative;
+    top: 135px;
+    right: 120px;
+}
+.fastest-delivery-text h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    color: #2C2F24;
+    max-width: 250px;
+}
+
+.fastest-delivery-text p{
+    font-size: 12px;
+    color: #555;
+    text-align: left;
+}
+
+.delivery-features {
+    list-style: none;
+    padding: 0;
+}
+
+.delivery-features li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.delivery-features li img {
+    margin-right: 10px;
+}
+.customers-reviews {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+.customers-reviews h2 {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif;
+
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.review-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.review-item h3 {
+    color: #e74c3c;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.review-item p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.reviewer {
+    display: flex;
+    align-items: center;
+}
+
+.reviewer img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.reviewer-info {
+    text-align: left;
+}
+
+.reviewer-info strong {
+    font-size: 16px;
+    display: block;
+}
+
+.reviewer-info span {
+    color: #666;
+    font-size: 14px;
+}
+.our-blog {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+
+.our-blog h2 {
+    font-size: 36px;
+    margin-bottom: 0px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    text-align: left;
+}
+
+.articles-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.article-item {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    /* transition: 0.3s ease-in-out; */
+    text-align: left;
+}
+
+/* .article-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+} */
+
+
+.article-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.article-item.large img {
+    width: 100%;
+    height: auto;
+    height: 366px;
+    object-fit: cover;
+}
+
+
+.article-info {
+    padding: 20px;
+}
+
+.article-info .date {
+    color: #888;
+    font-size: 12px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.article-info h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.article-info p {
+    font-size: 14px;
+    color: #666;
+}
+
+.article-item.large {
+    grid-column: span 2;
+}
+
+.btn-read-all {
+    background-color: #AD343E;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px; /* Use the same rounded style */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    top: -40px;
+    right: -520px;
+
+}
+
+.btn-read-all:hover {
+    background-color: #c0392b;
+}
+
+
+
+
+
 
 
 

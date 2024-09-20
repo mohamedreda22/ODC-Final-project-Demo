@@ -15,5 +15,6 @@ import { SingleProductComponent } from './single-product/single-product.componen
 })
 export class AppComponent {
   title = 'demo-front-final';
+  
 
 }
