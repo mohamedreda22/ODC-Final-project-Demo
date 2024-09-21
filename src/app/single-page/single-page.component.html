@@ -1,0 +1,26 @@
+<!-- <section *ngIf="mainArticle; else notFound" class="article-section">
+    <h1>{{ mainArticle?.title }}</h1>
+    <img [src]="mainArticle?.imgSrc" [alt]="mainArticle?.altText">
+    <div class="article-content">
+        <h2>What do you need to prepare?</h2>
+        <p>{{ mainArticle?.content }}</p>
+    </div>
+</section>
+
+<ng-template #notFound>
+    <p>Article not found. Please check the URL or return to the main page.</p>
+</ng-template>
+
+<section class="related-articles" *ngIf="mainArticle">
+    <h3>Read More Articles</h3>
+    <div class="related-grid">
+        @for (article of articles ; track $index) {
+
+            <div *ngIf="article.id !== articleId" class="related-item" (click)="goToArticle(article.id)">
+                <img [src]="article.imgSrc" [alt]="article.altText">
+                <p>{{ article.title }}</p>
+            </div>
+        }
+    </div>
+</section>
+ -->

@@ -1,0 +1,18 @@
+<section class="blog-section">
+  <div class="menu-header">
+    <h1>Our Blog & Articles</h1>
+    <p>We consider all the drivers of change give you the components <br>you need to create change that truly happens.</p>
+  </div>
+
+  <div class="blog-grid">
+    <article class="blog-item" *ngFor="let article of articles">
+      <a [routerLink]="['/articles', article.id]" style="text-decoration: none;">
+        <img [src]="article.imgSrc" [alt]="article.altText">
+        <div class="texting">
+          <p>{{ article.date }}</p>
+          <h2>{{ article.title }}</h2>
+        </div>
+      </a>
+    </article>
+  </div>
+</section>

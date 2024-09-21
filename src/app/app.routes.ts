@@ -6,13 +6,19 @@ import { MenuComponent } from './menu/menu.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { BookComponent } from './book/book.component';
-import { PagesComponent } from './pages/pages.component';
+import { BlogComponent } from './pages/pages.component';
+// import { SinglePageComponent } from './single-page/single-page.component';
 
 export const routes: Routes = [
     {
         path : "home",
         component : HomeComponent
-    },{
+    },
+    {
+        path : "",
+        component : HomeComponent
+    },
+        {
         path : "products",
         component : ProductComponent
     },
@@ -32,7 +38,12 @@ export const routes: Routes = [
         path : "book",
         component : BookComponent
     },{
-        path : "pages",
-        component : PagesComponent
-    }
+        path : "articles",
+        component : BlogComponent
+    },/* { 
+        path: 'articles/:id',
+        component: SinglePageComponent 
+    } *//* ,{ 
+        path: 'article/:',
+        redirectTo: '/article?id=1', pathMatch: 'full' },  */
 ];

@@ -1,0 +1,324 @@
+.visit-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    height: 100vh;
+    margin-top: 40px;
+    scale: 0.85;
+}
+
+.visit-us-container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    gap: 20px;
+    
+}
+
+.visit-us-image img {
+    border-radius: 10px;
+    width: 400px;
+    height: auto;
+}
+
+.visit-us-details {
+    background-color: #474747;
+    color: #f9f9f7;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 380px;
+    max-height: 250px;
+    position: relative;
+    top: 185px;
+    left: -310px;
+}
+
+.visit-us-details h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-item img {
+    width: 20px;
+    height: 20px;
+}
+
+.contact-item span {
+    font-size: 16px;
+}
+.right-side{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    height: 100vh;
+    position: relative;
+    right: 180px;
+    bottom: 100px;
+    scale: 1.15;
+    
+}
+.right-side h1{
+    color: #2C2F24;
+    font-size: 40px;
+    margin-right: 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    margin-top: -80px;
+    width: 400px;
+}
+.right-side h5{
+    color: #2C2F24;
+    font-size: 14px;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-weight: 400;
+    width: 400px;
+}
+.right-side p{
+    color: #2C2F24;
+    font-size: 12px;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-weight: 300;
+    width: 400px;
+}
+.right-side button{
+    height:42px;
+    width: 114px;
+    font-family: sans-serif;
+    font-size: 12px;
+    border-radius: 50px;    
+    margin: 12px;
+    cursor: pointer;
+    border: 1px solid black;
+    position: relative;
+    right:150px;
+    top: 10px;
+
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.hero {
+    position: relative;
+    background-image: url('/resturant-background.png');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -130px;
+}
+
+.hero-content {
+    text-align: center;
+    color: #fff;
+
+}
+
+.play-btn {
+    background: none;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.play-btn img {
+    width: 50px;
+    height: 50px;
+}
+
+.hero-content h1 {
+    font-size: 2.1rem;
+    font-weight: 500;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: 'Playfair Display', serif;
+
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px;
+    background-color: #fff;
+}
+
+.feature {
+    text-align: center;
+    display: flex; 
+    align-items: center;   
+}
+
+.feature img {
+    width: 40px;
+    height:40;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.feature h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.feature p {
+    font-size: 0.8rem;
+    color: #777;
+    line-height: 1.6;    
+    text-align: left;
+
+}
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-text {
+    max-width: 40%;
+}
+
+.info-text h1 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-family: 'Playfair Display', serif;
+}
+
+.info-text p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.info-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.info-card {
+     border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    flex-basis: 45%;
+}
+
+.info-card h2 {
+    font-size: 2.3rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+
+}
+
+.info-card p {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.info-image img {
+    width: 500px;
+    border-radius: 10px;
+    height: 580px;
+    object-fit: contain;
+}
+
+.customers-reviews {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.customers-reviews h2 {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif;
+
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.review-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.review-item h3 {
+    color: #e74c3c;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.review-item p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.reviewer {
+    display: flex;
+    align-items: center;
+}
+
+.reviewer img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.reviewer-info {
+    text-align: left;
+}
+
+.reviewer-info strong {
+    font-size: 16px;
+    display: block;
+}
+
+.reviewer-info span {
+    color: #666;
+    font-size: 14px;
+}
