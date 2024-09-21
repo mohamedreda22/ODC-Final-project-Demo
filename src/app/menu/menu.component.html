@@ -1,61 +1,48 @@
-<!-- Menu Section -->
 <section class="menu-section">
     <div class="menu-header">
-        <h1>Our Menu</h1>
-        <p>We consider all the drivers of change give you the components you need to change to create a truly happens.</p>
+      <h1>Our Menu</h1>
+      <p>We consider all the drivers of change give you the components <br>you need to create a truly happens.</p>
     </div>
+  
+    <!-- Menu Filters -->
     <div class="menu-filters">
-        <button class="filter active">All</button>
-        <button class="filter">Breakfast</button>
-        <button class="filter">Main Dishes</button>
-        <button class="filter">Drinks</button>
-        <button class="filter">Desserts</button>
+      <button class="filter" [class.active]="selectedCategory === 'All'" (click)="changeCategory('All')">All</button>
+      <button class="filter" [class.active]="selectedCategory === 'Breakfast'" (click)="changeCategory('Breakfast')">Breakfast</button>
+      <button class="filter" [class.active]="selectedCategory === 'Main Dishes'" (click)="changeCategory('Main Dishes')">Main Dishes</button>
+      <button class="filter" [class.active]="selectedCategory === 'Drinks'" (click)="changeCategory('Drinks')">Drinks</button>
+      <button class="filter" [class.active]="selectedCategory === 'Desserts'" (click)="changeCategory('Desserts')">Desserts</button>
     </div>
+  
+    <!-- Menu Items -->
     <div class="menu-items">
-        <!-- Menu Items -->
-        <div class="menu-item">
-            <img src="fried-eggs.jpg" alt="Fried Eggs">
-            <h2>$ 9.99</h2>
-            <p>Fried Eggs</p>
-            <span>Made with eggs, lettuce, salt, oil, and other ingredients.</span>
-        </div>
-        <div class="menu-item">
-            <img src="hawaiian-pizza.jpg" alt="Hawaiian Pizza">
-            <h2>$ 15.99</h2>
-            <p>Hawaiian Pizza</p>
-            <span>Made with eggs, lettuce, salt, oil, and other ingredients.</span>
-        </div>
-        <div class="menu-item">
-            <img src="martinez-cocktail.jpg" alt="Martinez Cocktail">
-            <h2>$ 7.25</h2>
-            <p>Martinez Cocktail</p>
-            <span>Made with eggs, lettuce, salt, oil, and other ingredients.</span>
-        </div>
-        <div class="menu-item">
-            <img src="butterscotch-cake.jpg" alt="Butterscotch Cake">
-            <h2>$ 20.99</h2>
-            <p>Butterscotch Cake</p>
-            <span>Made with eggs, lettuce, salt, oil, and other ingredients.</span>
-        </div>
-        <!-- Add more items as per the design -->
+      <div class="menu-item" *ngFor="let item of getFilteredMenuItems()">
+        <img [src]="item.image" [alt]="item.name">
+        <h2>$ {{ item.price.toFixed(2) }}</h2>
+        <p>{{ item.name }}</p>
+        <span>{{ item.description }}</span>
+      </div>
     </div>
-</section>
-
-<!-- App Order Section -->
+  </section>
+  <!-- App Order Section -->
 <section class="app-order-section">
     <div class="app-order-content">
         <h2>You can order through apps</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit enim bibendum sed et aliquet aliquet risus tempor semper.</p>
     </div>
     <div class="app-icons">
+        <div class="line-one">
         <img src="uberEats.png" alt="Uber Eats">
         <img src="grubhub.png" alt="Grubhub">
-        <img src="postmates.png" alt="Postmates">
+        <img src="postmates.png" alt="Postmates"></div>
+        <div class="line-two">        
         <img src="doordash.png" alt="Doordash">
         <img src="foodpanda.png" alt="Foodpanda">
-        <img src="deliveroo.png" alt="Deliveroo">
+        <img src="deliveroo.png" alt="Deliveroo"></div>
+        <div class="line-one">
         <img src="instacart.png" alt="instacart">
         <img src="jsutEat.png" alt="justEat">
         <img src="didiFood.png" alt="didiFood">
     </div>
+    </div>
 </section>
+  
