@@ -14,7 +14,7 @@ import { SingleProductComponent } from './single-product/single-product.componen
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'demo-front-final';
+  title = 'ODC-Final-project-Demo';
   
 
 }
