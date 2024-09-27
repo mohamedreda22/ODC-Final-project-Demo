@@ -5,10 +5,8 @@ const cors = require('cors');
 const Booking = require('./models/Booking');
 const Contact = require('./models/Contact');
 const MenuItem = require('./models/MenuItem');
-const jwt = require('jsonwebtoken');
 const User = require('./models/User.js'); 
 const bcrypt = require('bcrypt');
-
 
 const app = express();
 app.use(express.json()); 
@@ -22,26 +20,11 @@ mongoose.connect('mongodb://localhost:27017/restaurantDB')
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.log(err));
 
-
 // Server listening
 const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
-const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1]; // Split to get token
-
-    if (!token) return res.sendStatus(401); // If there's no token, return Unauthorized
-
-    jwt.verify(token, 'your_secret_key', (err, decoded) => {
-        if (err) return res.sendStatus(403); // If token is invalid, return Forbidden
-        req.userId = decoded.id; // Attach user ID to request
-        next(); // Proceed to the next middleware
-    });
-};
-
 
 // Booking route
 app.post('/api/booking', (req, res) => {
@@ -49,7 +32,7 @@ app.post('/api/booking', (req, res) => {
     newBooking.save()
       .then(booking => res.status(201).json(booking))
       .catch(err => res.status(400).json({ error: err.message }));
-  });
+});
 
 // Contact route
 app.post('/api/contact', async (req, res) => {
@@ -62,7 +45,7 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
-// get Contacts for admin only
+// Get Contacts for admin only
 app.get('/api/contact', async (req, res) => {
     try {
         const contacts = await Contact.find();
@@ -70,8 +53,7 @@ app.get('/api/contact', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-}
-);
+});
 
 // Get all menu items
 app.get('/api/menu', async (req, res) => {
@@ -91,7 +73,6 @@ app.post('/api/menu', async (req, res) => {
         res.status(201).json(newItem);
     } catch (error) {
         res.status(500).json({ message: error.message });
-        
     }
 });
 
@@ -129,19 +110,18 @@ app.post('/api/login', async (req, res) => {
 
     try {
         const user = await User.findOne({ username });
-        if (!user || user.password !== password) {
-
+        if (!user || !(await bcrypt.compare(password, user.password))) {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
-
-        const token = jwt.sign({ id: user._id }, 'your_secret_key', { expiresIn: '1h' });
-        res.json({ token });
+        // Token generation is removed
+        res.status(200).json({ message: 'Login successful' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
 
-// get all users 
+
+// Get all users 
 app.get('/api/users', async (req, res) => {
     try {
         const users = await User.find();
@@ -151,9 +131,9 @@ app.get('/api/users', async (req, res) => {
     }
 });
 
-// logout
+// Logout
 app.post('/api/logout', (req, res) => {
-    res.json({ token: null });
+    res.json({ message: 'Logged out successfully' });
 });
 
 // Get all bookings
@@ -167,7 +147,7 @@ app.get('/api/booking', async (req, res) => {
 });
 
 // Delete booking by ID
-app.delete('/api/booking/:id', authenticateToken, async (req, res) => {
+app.delete('/api/booking/:id', async (req, res) => {
     try {
         const booking = await Booking.findById(req.params.id);
         if (!booking) {
@@ -179,5 +159,3 @@ app.delete('/api/booking/:id', authenticateToken, async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
-
-
