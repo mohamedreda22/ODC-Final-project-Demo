@@ -62,6 +62,17 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
+// get Contacts for admin only
+app.get('/api/contact', async (req, res) => {
+    try {
+        const contacts = await Contact.find();
+        res.status(200).json(contacts);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+);
+
 // Get all menu items
 app.get('/api/menu', async (req, res) => {
     try {
@@ -73,18 +84,19 @@ app.get('/api/menu', async (req, res) => {
 });
 
 // Add new menu item (admin only)
-app.post('/api/menu', authenticateToken, async (req, res) => {
+app.post('/api/menu', async (req, res) => {
     try {
         const newItem = new MenuItem(req.body);
         await newItem.save();
         res.status(201).json(newItem);
     } catch (error) {
         res.status(500).json({ message: error.message });
+        
     }
 });
 
 // Delete menu item (admin only)
-app.delete('/api/menu/:id', authenticateToken, async (req, res) => {
+app.delete('/api/menu/:id', async (req, res) => {
     try {
         const item = await MenuItem.findById(req.params.id);
         if (!item) {
@@ -129,14 +141,11 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-// Register route
-app.post('/api/register', async (req, res) => {
-    const { username, password } = req.body;
-
+// get all users 
+app.get('/api/users', async (req, res) => {
     try {
-        const user = new User({ username, password });
-        await user.save();
-        res.status(201).json(user);
+        const users = await User.find();
+        res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

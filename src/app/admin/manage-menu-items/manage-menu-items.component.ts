@@ -48,50 +48,37 @@ export class ManageMenuItemsComponent {
 
   // Add a new menu item
   addMenuItem() {
-    if (!this.token) {
-      console.error('No token found. Unable to add menu item.');
-      return; 
-    }
-
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`
-    });
-
-    this.http.post('http://localhost:5000/api/menu', this.newItem, { headers })
-      .subscribe(
-        response => {
-          console.log('Menu item added', response);
-          this.loadMenuItems(); // Reload menu items after adding
-          this.resetForm(); // Reset form fields after adding
-          this.showForm = false; // Hide the form after submission
+    // Ensure the token is retrieved from localStorage
+    const token = localStorage.getItem('token');
+  
+    if (token) {
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+      this.http.post('http://localhost:5000/api/menu', this.newItem, { headers }).subscribe(
+        () => {
+          this.loadMenuItems(); // Reload menu items after adding new item
+          this.newItem = { name: '', description: '', price: 0, image: '' }; // Reset form fields
         },
-        error => {
+        (error) => {
           console.error('Error adding menu item', error);
-          console.log('Token used for adding menu item:', this.token);
-
         }
       );
+    } else {
+      console.error('No token found. User may not be authenticated.');
+    }
   }
+  
+  
 
   // Delete a menu item by ID
-  deleteMenuItem(id: string) {
-    if (!this.token) {
-      console.error('No token found. Unable to delete menu item.');
-      return; // Prevent deleting if there's no token
-    }
-
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`
-    });
-
-    this.http.delete(`http://localhost:5000/api/menu/${id}`, { headers })
-      .subscribe(
-        () => {
-          this.loadMenuItems(); // Reload menu items after deletion
-        },
-        error => {
-          console.error('Error deleting menu item', error);
-        }
-      );
+  deleteMenuItem(_id: string) {
+    this.http.delete(`http://localhost:5000/api/menu/${_id}`).subscribe(
+      () => {
+        this.loadMenuItems();
+      },
+      (error) => {
+        console.error('Error deleting menu item', error);
+      }
+    );
   }
 }
