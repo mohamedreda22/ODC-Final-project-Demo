@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ODC-Final-project-Demo": {
+    "demo-front-final": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ODC-Final-project-Demo",
+            "outputPath": "dist/demo-front-final",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -59,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ODC-Final-project-Demo:build:production"
+              "buildTarget": "demo-front-final:build:production"
             },
             "development": {
-              "buildTarget": "ODC-Final-project-Demo:build:development"
+              "buildTarget": "demo-front-final:build:development"
             }
           },
           "defaultConfiguration": "development"
