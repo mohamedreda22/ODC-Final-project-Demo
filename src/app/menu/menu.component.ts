@@ -1,28 +1,44 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+// Define the interface for a menu item
+interface MenuItem {
+  name: string;
+  price: number;
+  image: string;
+  description: string;
+  category: string;
+}
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule], 
+  imports: [CommonModule, FormsModule],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  // Menu items array
-  menuItems = [
-    { id: 1, name: "Fried Eggs", price: 9.99, image: "eggs.png", description: "Made with eggs, lettuce, salt, oil, and other ingredients.", category: "Breakfast" },
-    { id: 2, name: "Hawaiian Pizza", price: 15.99, image: "pizza1.png", description: "Made with eggs, lettuce, salt, oil, and other ingredients.", category: "Main Dishes" },
-    { id: 3, name: "Martinez Cocktail", price: 7.25, image: "drinks1.png", description: "Made with eggs, lettuce, salt, oil, and other ingredients.", category: "Drinks" },
-    { id: 4, name: "Butterscotch Cake", price: 20.99, image: "chess-cake.png", description: "Made with eggs, lettuce, salt, oil, and other ingredients.", category: "Desserts" },
-    { id: 5, name: "Mint Lemonade", price: 5.89, image: "lemon.png", description: "Made with eggs, lettuce, salt, oil, and other ingredients.", category: "Drinks" },
-    { id: 6, name: "Chocolate Icecream", price: 18.05, image: "dark.png", description: "Made with eggs, lettuce, salt, oil, and other ingredients.", category: "Desserts" },
-    { id: 7, name: "Cheese Burger", price: 12.55, image: "burger1.png", description: "Made with eggs, lettuce, salt, oil, and other ingredients.", category: "Main Dishes" },
-    { id: 8, name: "Classic Waffles", price: 12.99, image: "waffles.png", description: "Made with eggs, lettuce, salt, oil, and other ingredients.", category: "Desserts" },
-  ];
-
+  // Array of menu items
+  menuItems: MenuItem[] = [];
   selectedCategory = 'All';
 
+  constructor(private http: HttpClient) {
+    this.fetchMenuItems();
+  }
+
+  // Fetch all menu items
+  fetchMenuItems() {
+    this.http.get<MenuItem[]>('http://localhost:5000/api/menu')
+      .subscribe((items: MenuItem[]) => {
+        this.menuItems = items;
+      }, error => {
+        console.log('Error fetching menu items', error);
+      });
+  }
+
+  // Filter menu items by category
   getFilteredMenuItems() {
     if (this.selectedCategory === 'All') {
       return this.menuItems;

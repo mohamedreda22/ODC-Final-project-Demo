@@ -108,7 +108,7 @@ body {
     z-index: -1;
     opacity: 0.5;
     transform: translateY(-50%);
-    background-image: url('/assets/map.png'); /* Ensure the path is correct */
+    background-image: url('../../../public/map.png'); 
     background-size: contain;
-    background-repeat: no-repeat; /* Add this to prevent repeating */
+    background-repeat: no-repeat;
 }

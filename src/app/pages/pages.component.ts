@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
-  standalone: true,
-  imports: [CommonModule, RouterLink], 
   templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.css']
+  styleUrls: ['./blog.component.css'],
+  standalone: true,
+  imports: [CommonModule, RouterLink] // Add CommonModule here
 })
 export class BlogComponent implements OnInit {
-   articles = [
+  articles = [
     {
       id: 1,
       title: "How to prepare a delicious gluten-free sushi",
@@ -120,11 +120,13 @@ export class BlogComponent implements OnInit {
       category: "Healthy Eating"
     }
   ];
-  ngOnInit() {
-  }
-  
-  // Function to get all articles
-  getArticles() {
-    return this.articles;
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {}
+
+  goToArticle(id: number): void {
+    this.router.navigate(['/articles', id], { state: { articles: this.articles } });
+    console.log(this.articles);  
   }
 }

@@ -7,7 +7,14 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { BookComponent } from './book/book.component';
 import { BlogComponent } from './pages/pages.component';
-// import { SinglePageComponent } from './single-page/single-page.component';
+import { SinglePageComponent } from './single-page/single-page.component';
+import { LoginComponent } from './login/login.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { RegisterComponent } from './register/register.component';
+import { ViewContactsComponent } from './admin/view-contacts/view-contacts.component';
+import { ViewBookingsComponent } from './admin/view-bookings/view-bookings.component';
+import { ManageMenuItemsComponent } from './admin/manage-menu-items/manage-menu-items.component';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 
 export const routes: Routes = [
     {
@@ -40,10 +47,28 @@ export const routes: Routes = [
     },{
         path : "articles",
         component : BlogComponent
-    },/* { 
+    }, { 
         path: 'articles/:id',
         component: SinglePageComponent 
-    } *//* ,{ 
-        path: 'article/:',
-        redirectTo: '/article?id=1', pathMatch: 'full' },  */
+    },{
+        path : "login",
+        component : LoginComponent
+    },{ path: 'adminDashboard', 
+        component: AdminDashboardComponent 
+    },{
+        path: 'adminDashboard/users', 
+        component: ManageUsersComponent
+    },{ 
+        path: 'adminDashboard/menu-items', 
+        component: ManageMenuItemsComponent
+    },{ 
+        path: 'adminDashboard/bookings', 
+        component: ViewBookingsComponent
+    },{ 
+        path: 'adminDashboard/contacts', 
+        component: ViewContactsComponent
+    },{
+        path : "register",
+        component : RegisterComponent
+    }
 ];

@@ -14,6 +14,10 @@
             </span>
            </div>
     </div>
+    <div class="admin-login">
+        <a *ngIf="!isAdminLoggedIn()" routerLink="/login" routerLinkActive="active">Admin Login</a>
+        <a *ngIf="isAdminLoggedIn()" (click)="logout()" routerLink="/">Logout</a>
+    </div>
     <div class="nav-social">
         <div class="social-icons" dir="rtl">
             <img src="./github-icon.png"/>
@@ -29,16 +33,23 @@
         <img class="logo" src="./logo.png"/>
         <h1 class="brand-name">Bistro Bliss</h1>
     </div>
-<div class="nav-btn">
-    <a routerLink="/home" routerLinkActive="active" >Home</a>
-    <!-- <a routerLink="/products" routerLinkActive="active">Products</a> -->
-    <a routerLink="/about" routerLinkActive="active">About</a>
-    <a routerLink="/menu" routerLinkActive="active">Menu</a>
-    <a routerLink="/articles" routerLinkActive="active">Pages</a>
-    <a routerLink="/contact" routerLinkActive="active">Contact</a>
-</div>
+    <div class="nav-btn">
+        <a routerLink="/home" routerLinkActive="active">Home</a>
+        <a routerLink="/about" routerLinkActive="active">About</a>
+        <a routerLink="/menu" routerLinkActive="active">Menu</a>
+        <a routerLink="/articles" routerLinkActive="active">Pages</a>
+        <a routerLink="/contact" routerLinkActive="active">Contact</a>
+    </div>
 
     <div class="nav-book-btn">
         <a routerLink="/book" routerLinkActive="active">Book A Table</a>
     </div>
+    <div class="nav-book-btn">
+        <a *ngIf="isAdminLoggedIn()" routerLink="adminDashboard" routerLinkActive="active" style="background-color: #AD343E;color:white">Admin Dashboard</a>
+    </div>
+
+    <!-- Admin Dashboard Button -->
+<!--     <div *ngIf="isAdminLoggedIn()" class="nav-admin-btn">
+        <a routerLink="/admin" routerLinkActive="active">Admin Dashboard</a>
+    </div> -->
 </div>

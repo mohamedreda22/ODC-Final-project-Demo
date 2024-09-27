@@ -1,0 +1,19 @@
+<div class="view-bookings-container">
+  <h1>View Bookings</h1>
+
+  <div *ngIf="bookings.length === 0" class="no-bookings">
+    <p>No bookings available.</p>
+  </div>
+
+  <ul *ngIf="bookings.length > 0">
+    <li *ngFor="let booking of bookings">
+      <!-- <p>Booking ID: {{ booking._id }}</p> -->
+      <p>Customer Name: {{ booking.name }}</p>
+      <p>Date: {{ booking.date }}</p>
+      <p>Time: {{ booking.time }}</p>
+      <p>Number of People: {{ booking.person }}</p>
+      <p>Phone Number: {{ booking.phone }}</p>
+      <button (click)="deleteBooking(booking._id)">Delete</button>
+    </li>
+  </ul>
+</div>
