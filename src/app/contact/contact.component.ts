@@ -29,8 +29,8 @@ export class ContactComponent {
     this.http.post('http://localhost:5000/api/contact', this.contactForm.value)
       .subscribe({
         next: (response) => {
-          console.log('Message sent', response);
-          alert('Your message has been sent!');
+          // console.log('Message sent', response);
+          // alert('Your message has been sent!');
           this.contactForm.reset();
         },
         error: (error) => {

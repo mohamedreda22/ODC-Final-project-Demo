@@ -1,6 +1,20 @@
-<div class="view-contacts">
-    <h1>View Contact Requests</h1>
-    <p>This section allows you to manage customer contact requests.</p>
-    <!-- Future contact request management logic goes here -->
+<div class="admin-contact-container">
+  <h1>Manage Contacts</h1>
+
+  <div *ngIf="contacts.length === 0" class="no-contacts">
+    <p>No contacts available.</p>
   </div>
-  
+
+  <ul *ngIf="contacts.length > 0">
+    <li *ngFor="let contact of contacts">
+      <div class="contact-card">
+        <p><strong>Name:</strong> {{ contact.name }}</p>
+        <p><strong>Email:</strong> {{ contact.email }}</p>
+        <p><strong>Subject:</strong> {{ contact.subject }}</p>
+        <p><strong>Date:</strong> {{ contact.date | date:'yyyy-MM-dd HH:mm' }}</p>
+        <p><strong>Message:</strong> {{ contact.message }}</p>
+        <button (click)="deleteContact(contact._id)">Delete</button>
+      </div>
+    </li>
+  </ul>
+</div>

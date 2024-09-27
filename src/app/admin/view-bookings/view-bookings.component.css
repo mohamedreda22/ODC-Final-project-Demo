@@ -6,47 +6,52 @@
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     background-color: #ffffff; /* White background */
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow wrapping for responsive design */
-    justify-content: space-between; /* Space between cards */
-  }
-  
-  h1 {
+}
+
+h1 {
     text-align: center; /* Center the heading */
     color: #333; /* Dark text color */
     font-family: 'Playfair Display', serif;
-  }
-  
-  ul {
+    margin-bottom: 20px; /* Space below heading */
+}
+
+ul {
     list-style-type: none; /* Remove default list styles */
     padding: 0; /* Remove default padding */
     display: flex; /* Use flexbox for card layout */
     flex-wrap: wrap; /* Allow wrapping of cards */
     justify-content: space-between; /* Space between cards */
-  }
-  
-  li {
+}
+
+li {
+    flex: 1 1 calc(30% - 20px); /* Make three cards in a row, accounting for margins */
+    margin: 10px; /* Margin around each card */
+    max-width: 300px;
+}
+
+.booking-card {
     background-color: #f9f9f9; /* Light grey background for each booking */
     border: 1px solid #e0e0e0; /* Light border around each booking */
     border-radius: 4px; /* Rounded corners */
     padding: 15px; /* Padding inside each booking */
-    margin: 10px; /* Margin around each card */
-    flex: 1 1 calc(30% - 20px); /* Make three cards in a row, accounting for margins */
-    transition: background-color 0.3s; /* Smooth background change on hover */
-    max-width: 300px;
-  }
-  
-  li:hover {
-    background-color: #f1f1f1; /* Slightly darker grey on hover */
-  }
-  
-  p {
+    transition: box-shadow 0.3s; /* Smooth shadow change on hover */
+}
+
+.booking-card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+p {
     margin: 5px 0; /* Space between paragraphs */
     color: #555; /* Slightly lighter text color */
     font-family: 'Arial', sans-serif; /* Change font */
-  }
-  
-  button {
+}
+
+strong {
+    color: #333; /* Darker color for labels */
+}
+
+button {
     background-color: #ff4c4c; /* Red background for delete button */
     color: white; /* White text */
     border: none; /* Remove default border */
@@ -54,15 +59,19 @@
     padding: 10px 15px; /* Padding inside the button */
     cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.3s; /* Smooth background change on hover */
-  }
-  
-  button:hover {
+    margin-top: 10px; /* Space above the button */
+    position: relative;
+    left: 35%;
+}
+
+button:hover {
     background-color: #d43f3f; /* Darker red on hover */
-  }
-  
-  .no-bookings {
+}
+
+.no-bookings {
     text-align: center; /* Center the no bookings message */
     color: #777; /* Light grey text color */
     font-family: 'Arial', sans-serif; /* Change font */
-  }
-  
+    font-size: 1.2em; /* Slightly larger font for visibility */
+    margin-top: 20px; /* Space above no bookings message */
+}
