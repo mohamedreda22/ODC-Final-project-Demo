@@ -89,6 +89,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
     margin-bottom: 20px;
+    margin-left: 80px;
   }
   
   .toggle-form-button:hover {
@@ -119,6 +120,7 @@
     padding: 10px 15px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-right: 400px;
   }
     .add-menu-item-form input[type="file"]{
         margin-bottom: 20px;

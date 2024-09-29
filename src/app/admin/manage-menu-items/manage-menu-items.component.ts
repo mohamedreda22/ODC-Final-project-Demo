@@ -13,8 +13,9 @@ import { CategoryService } from '../../../../backend/models/Category';
 })
 export class ManageMenuItemsComponent implements OnInit {
   menuItems: any[] = [];
-  newItem = { name: '', description: '', price: 0, category: '', image: null };
+  newItem = { _id:'', name: '', description: '', price: 0, category: '', image: null };
   showForm = false;
+  isEditMode = false;  // Flag to indicate if in edit mode
   token: string | null = localStorage.getItem('token');
   categories: { id: string; name: string }[] = [];
   selectedFile: File | null = null;
@@ -60,38 +61,67 @@ export class ManageMenuItemsComponent implements OnInit {
   }
 
   resetForm() {
-    this.newItem = { name: '', description: '', price: 0, category: '', image: null };
+    this.newItem = { _id:'', name: '', description: '', price: 0, category: '', image: null };
+    this.isEditMode = false; // Reset edit mode flag
   }
 
   addMenuItem() {
     const token = localStorage.getItem('token');
 
-    if (token && this.selectedFile) {
+    if (token) {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       const formData = new FormData();
       formData.append('name', this.newItem.name);
       formData.append('description', this.newItem.description);
       formData.append('price', this.newItem.price.toString());
       formData.append('category', this.newItem.category);
-      formData.append('image', this.selectedFile, this.selectedFile.name);
+      if (this.selectedFile) {
+        formData.append('image', this.selectedFile, this.selectedFile.name);
+      }
 
-      this.http.post('http://localhost:5000/api/menu', formData, { headers }).subscribe(
+      const apiUrl = this.isEditMode 
+        ? `http://localhost:5000/api/menu/${this.newItem._id}` // Use item ID for updating
+        : 'http://localhost:5000/api/menu'; // Add new item
+
+      const requestMethod = this.isEditMode ? this.http.put(apiUrl, formData, { headers }) : this.http.post(apiUrl, formData, { headers });
+
+      requestMethod.subscribe(
         () => {
           this.loadMenuItems();
           this.resetForm();
           this.selectedFile = null;
         },
         (error) => {
-          console.error('Error adding menu item', error);
-          console.log('formdata', formData)
+          console.error('Error saving menu item', error);
         }
       );
     } else {
-      console.error('No token found or no file selected.');
+      console.error('No token found.');
     }
   }
 
+  // Edit menu item and populate form
+  editMenuItem(itemId: string) {
+    const item = this.menuItems.find(i => i._id === itemId);
+    if (item) {
+      this.newItem = { ...item }; // Populate form with selected item data
+      this.isEditMode = true; // Set edit mode
+      this.showForm = true; // Show the form
+    }
+  }
   deleteMenuItem(_id: string) {
+    this.http.delete(`http://localhost:5000/api/menu/${_id}`).subscribe(
+      () => {
+        this.loadMenuItems();
+      },
+      (error) => {
+        console.error('Error deleting menu item', error); // Log the error
+      }
+    );
+  }
+  
+  
+/*   deleteMenuItem(_id: string) {
     this.http.delete(`http://localhost:5000/api/menu/${_id}`).subscribe(
       () => {
         this.loadMenuItems();
@@ -100,5 +130,5 @@ export class ManageMenuItemsComponent implements OnInit {
         console.error('Error deleting menu item', error);
       }
     );
-  }
+  } */
 }

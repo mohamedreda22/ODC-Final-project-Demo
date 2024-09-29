@@ -1,12 +1,10 @@
 <div class="admin-menu-items-container">
   <h1>Manage Menu Items</h1>
 
-  <!-- Toggle button for the form -->
   <button (click)="toggleForm()" class="toggle-form-button">
     {{ showForm ? 'Cancel' : 'Add Menu Item' }}
   </button>
 
-  <!-- Form to add a new menu item -->
   <form *ngIf="showForm" (submit)="addMenuItem()" class="add-menu-item-form">
     <input type="text" [(ngModel)]="newItem.name" name="itemName" placeholder="Item Name" required />
     <input type="text" [(ngModel)]="newItem.description" name="itemDescription" placeholder="Description" required />
@@ -16,14 +14,11 @@
       <option *ngFor="let category of categories" [value]="category.id">
           {{ category.name }}
       </option>
-  </select>
-  
-  
-    <!-- <input type="file" [(ngModel)]="newItem.image" name="itemImage" placeholder="Image" required /> -->
+    </select>
+    
     <input type="file" (change)="onFileSelected($event)" required />
     <button type="submit">Add Menu Item</button>
   </form>
-  
 
   <div *ngIf="menuItems.length === 0" class="no-menu-items">
     <p>No menu items available.</p>
@@ -32,13 +27,13 @@
   <ul *ngIf="menuItems.length > 0">
     <li *ngFor="let item of menuItems">
       <div class="menu-item-card">
-        <!-- <img [src]="item.image" alt="Menu Item Image" /> -->
         <img [src]="'http://localhost:5000/uploads/' + item.image" alt="Menu Item Image" />
         <p><strong>Name:</strong> {{ item.name }}</p>
         <p><strong>Description:</strong> {{ item.description }}</p>
         <p><strong>Category:</strong> {{ item.category }}</p>
         <p><strong>Price:</strong> ${{ item.price | number: '1.2-2' }}</p>
-        <button (click)="deleteMenuItem(item._id)">Delete</button>
+        <button (click)="deleteMenuItem(item._id)" style="margin-left:-35px">Delete</button>
+        <button (click)="editMenuItem(item._id)" style="background-color: rgb(49, 149, 49);margin-left:10px;">Edit</button>
       </div>
     </li>
   </ul>

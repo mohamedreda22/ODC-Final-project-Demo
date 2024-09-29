@@ -16,8 +16,9 @@
   <!-- Menu Items -->
   <div class="menu-items">
     <div class="menu-item" *ngFor="let item of getFilteredMenuItems()">
-      <img [src]="item.image" [alt]="item.name">
-      <h2>$ {{ item.price.toFixed(2) }}</h2>
+      <!-- <img [src]="item.image" [alt]="item.name"> -->
+      <img [src]="'http://localhost:5000/uploads/' + item.image" alt="Menu Item Image" />
+      <h2>$ {{ item.price}}</h2>
       <p>{{ item.name }}</p>
       <span>{{ item.description }}</span>
     </div>

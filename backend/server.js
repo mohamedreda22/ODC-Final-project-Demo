@@ -136,29 +136,69 @@ app.post('/api/menu', (req, res) => {
 
   // Serve static files (uploads)
 app.use('/uploads', express.static('uploads'));
-/* app.post('/api/menu', async (req, res) => {
-    try {
-        const newItem = new MenuItem(req.body);
-        await newItem.save();
-        res.status(201).json(newItem);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-}); */
+
+// Update menu item (admin only)
+app.put('/api/menu/:id', (req, res) => {
+    upload(req, res, async (err) => {
+        if (err) {
+            return res.status(400).json({ message: err });
+        }
+
+        try {
+            const { name, description, price, category } = req.body;
+            const updatedItem = {
+                name,
+                description,
+                price,
+                category,
+            };
+
+            // If a new image is uploaded, update the image field
+            if (req.file) {
+                updatedItem.image = req.file.filename; // Save new image filename
+            }
+
+            const item = await MenuItem.findByIdAndUpdate(req.params.id, updatedItem, { new: true });
+            if (!item) {
+                return res.status(404).json({ message: 'Item not found' });
+            }
+            res.status(200).json(item);
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    });
+});
 
 // Delete menu item (admin only)
 app.delete('/api/menu/:id', async (req, res) => {
+    console.log(`Attempting to delete item with ID: ${req.params.id}`);
+    try {
+        const result = await MenuItem.findByIdAndDelete(req.params.id);
+        if (!result) {
+            return res.status(404).json({ message: 'Item not found' });
+        }
+        res.status(200).json({ message: 'Item deleted' });
+    } catch (error) {
+        console.error('Error deleting item:', error);
+        res.status(500).json({ message: error.message });
+    }
+});
+
+/* app.delete('/api/menu/:id', async (req, res) => {
+    console.log(`Attempting to delete item with ID: ${req.params.id}`);
     try {
         const item = await MenuItem.findById(req.params.id);
         if (!item) {
             return res.status(404).json({ message: 'Item not found' });
         }
         await item.remove();
+        console.log('Item deleted successfully');
         res.status(200).json({ message: 'Item deleted' });
     } catch (error) {
+        console.error('Error deleting item:', error);
         res.status(500).json({ message: error.message });
     }
-});
+}); */
 
 // Register route
 app.post('/api/register', async (req, res) => {
