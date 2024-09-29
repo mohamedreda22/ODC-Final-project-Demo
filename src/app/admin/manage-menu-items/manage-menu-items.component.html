@@ -11,7 +11,16 @@
     <input type="text" [(ngModel)]="newItem.name" name="itemName" placeholder="Item Name" required />
     <input type="text" [(ngModel)]="newItem.description" name="itemDescription" placeholder="Description" required />
     <input type="number" [(ngModel)]="newItem.price" name="itemPrice" placeholder="Price" required min="0" />
-    <input type="file" [(ngModel)]="newItem.image" name="itemImage" placeholder="Image" required />
+    <select [(ngModel)]="newItem.category" name="category" required>
+      <option value="">Select Category</option>
+      <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+      </option>
+  </select>
+  
+  
+    <!-- <input type="file" [(ngModel)]="newItem.image" name="itemImage" placeholder="Image" required /> -->
+    <input type="file" (change)="onFileSelected($event)" required />
     <button type="submit">Add Menu Item</button>
   </form>
   
@@ -23,9 +32,11 @@
   <ul *ngIf="menuItems.length > 0">
     <li *ngFor="let item of menuItems">
       <div class="menu-item-card">
-        <img [src]="item.image" alt="Menu Item Image" />
+        <!-- <img [src]="item.image" alt="Menu Item Image" /> -->
+        <img [src]="'http://localhost:5000/uploads/' + item.image" alt="Menu Item Image" />
         <p><strong>Name:</strong> {{ item.name }}</p>
         <p><strong>Description:</strong> {{ item.description }}</p>
+        <p><strong>Category:</strong> {{ item.category }}</p>
         <p><strong>Price:</strong> ${{ item.price | number: '1.2-2' }}</p>
         <button (click)="deleteMenuItem(item._id)">Delete</button>
       </div>

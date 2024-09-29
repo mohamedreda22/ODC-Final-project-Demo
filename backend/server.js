@@ -7,6 +7,8 @@ const Contact = require('./models/Contact');
 const MenuItem = require('./models/MenuItem');
 const User = require('./models/User.js'); 
 const bcrypt = require('bcrypt');
+const multer = require('multer');
+const path = require('path');
 
 const app = express();
 app.use(express.json()); 
@@ -25,6 +27,45 @@ const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+app.get('/api/categories', (req, res) => {
+    // Fetch or return categories here
+    res.json([
+        { id: 1, name: 'Breakfast' },
+        { id: 2, name: 'Main Dishes' }, 
+        { id: 3, name: 'Desserts' },
+        { id: 4, name: 'Drinks' }
+    ]);
+});
+
+// Set up storage engine
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/'); // Uploads folder where images are stored
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+  });
+
+  // Init upload
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 1000000 }, // Limit size to 1MB
+    fileFilter: function (req, file, cb) {
+      // Check file type
+      const filetypes = /jpeg|jpg|png|gif/;
+      const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+      const mimetype = filetypes.test(file.mimetype);
+  
+      if (mimetype && extname) {
+        return cb(null, true);
+      } else {
+        cb('Error: Images Only!');
+      }
+    }
+  }).single('image'); // 'image' should match the form field name
+  
 
 // Booking route
 app.post('/api/booking', (req, res) => {
@@ -66,7 +107,36 @@ app.get('/api/menu', async (req, res) => {
 });
 
 // Add new menu item (admin only)
-app.post('/api/menu', async (req, res) => {
+// Add new menu item (with file upload)
+app.post('/api/menu', (req, res) => {
+    upload(req, res, (err) => {
+      if (err) {
+        return res.status(400).json({ message: err });
+      }
+        // Ensure `req.file` exists before trying to access it
+        if (!req.file) {
+            return res.status(400).json({ message: 'No file uploaded' });
+          }
+
+      // Create a new menu item with the file path
+      const { name, description, price, category } = req.body;
+      const newItem = new MenuItem({
+        name,
+        description,
+        price,
+        category,
+        image: req.file.filename // Save only the filename in the database
+      });
+  
+      newItem.save()
+        .then(item => res.status(201).json(item))
+        .catch(err => res.status(500).json({ message: err.message }));
+    });
+  });
+
+  // Serve static files (uploads)
+app.use('/uploads', express.static('uploads'));
+/* app.post('/api/menu', async (req, res) => {
     try {
         const newItem = new MenuItem(req.body);
         await newItem.save();
@@ -74,7 +144,7 @@ app.post('/api/menu', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-});
+}); */
 
 // Delete menu item (admin only)
 app.delete('/api/menu/:id', async (req, res) => {
