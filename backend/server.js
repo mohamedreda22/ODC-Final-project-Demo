@@ -254,14 +254,41 @@ app.get('/api/booking', async (req, res) => {
     }
 });
 
-// Delete booking by ID
-app.delete('/api/booking/:id', async (req, res) => {
+// update booking by ID (admin only)
+app.put('/api/booking/:id', async (req, res) => {
     try {
-        const booking = await Booking.findById(req.params.id);
+        const { date, time, name, phone, person} = req.body;
+        const updatedBooking = {
+            date,
+            time,
+            name,
+            phone,
+            person
+        };
+        const booking = await Booking
+            .findByIdAndUpdate(req.params.id, updatedBooking, { new: true });
         if (!booking) {
             return res.status(404).json({ message: 'Booking not found' });
         }
-        await booking.remove();
+        res.status(200).json(booking);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+);
+        
+
+
+
+
+
+// Delete booking by ID
+app.delete('/api/booking/:id', async (req, res) => {
+    try {
+        const booking = await Booking.findByIdAndDelete(req.params.id);
+        if (!booking) {
+            return res.status(404).json({ message: 'Booking not found' });
+        }
         res.status(200).json({ message: 'Booking deleted' });
     } catch (error) {
         res.status(500).json({ message: error.message });

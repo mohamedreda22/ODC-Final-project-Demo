@@ -13,8 +13,47 @@
         <p><strong>Time:</strong> {{ booking.time }}</p>
         <p><strong>Number of People:</strong> {{ booking.person }}</p>
         <p><strong>Phone Number:</strong> {{ booking.phone }}</p>
-        <button (click)="deleteBooking(booking._id)">Delete</button>
+        <div class="form-btns">
+          <button (click)="editBooking(booking)">Edit</button>
+          <button (click)="deleteBooking(booking._id)" type="button">Delete</button>
+        </div>
       </div>
     </li>
   </ul>
+<!-- Modal Backdrop -->
+<div *ngIf="isEditMode" class="modal-backdrop"></div>
+
+<!-- Update Form -->
+<div *ngIf="isEditMode" class="update-booking-form">
+  <h2>Edit Booking</h2>
+  <form (ngSubmit)="updateBooking()">
+    <div class="row">
+      <div class="form-group">
+    <label for="name">Customer Name:</label>
+    <input id="name" [(ngModel)]="selectedBooking.name" name="name" required />
+</div>      
+<div class="form-group">
+    <label for="date">Date:</label>
+    <input id="date" type="date" [(ngModel)]="selectedBooking.date" name="date" required />
+  </div></div>
+
+  <div class="row">
+    <div class="form-group">
+    <label for="time">Time:</label>
+    <input id="time" type="time" [(ngModel)]="selectedBooking.time" name="time" required />
+</div>
+<div class="form-group">
+    <label for="person">Number of People:</label>
+    <input id="person" type="number" [(ngModel)]="selectedBooking.person" name="person" min="1" max="4" required />
+</div></div>
+<div class="form-group">
+    <label for="phone">Phone Number:</label>
+    <input id="phone" [(ngModel)]="selectedBooking.phone" name="phone" required />
+</div>
+    <div class="form-btns">
+      <button type="submit">Save</button>
+      <button type="button" (click)="cancelUpdate()">Cancel</button>
+    </div>
+  </form>
+</div>
 </div>
