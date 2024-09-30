@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { ArticleService } from './article.service';
 import { Article } from './article.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-single-page',
-  imports:[CommonModule],
+  imports:[CommonModule, RouterLink],
   templateUrl: './single-page.component.html',
   styleUrls: ['./single-page.component.css'],
   standalone: true,
@@ -22,9 +22,17 @@ export class SinglePageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const articleId = this.route.snapshot.paramMap.get('id')!;
+    // Subscribe to route changes and fetch the new article dynamically
+    this.route.params.subscribe(params => {
+      const articleId = params['id'];
+      this.fetchArticleById(articleId);
+    });
 
-    // Fetch the article by ID
+    // Load related articles only once
+    this.loadArticles();
+  }
+
+  fetchArticleById(articleId: string): void {
     this.articleService.getArticleById(articleId).subscribe(
       (article) => {
         this.Article = article; // Set the Article if found
@@ -34,18 +42,11 @@ export class SinglePageComponent implements OnInit {
         this.router.navigate(['/articles']); // Navigate to articles list if not found
       }
     );
-
-    // Load related articles
-    this.loadArticles();
   }
 
-  loadArticles() {
+  loadArticles(): void {
     this.articleService.getArticles().subscribe((articles) => {
       this.articles = articles; // Assign fetched articles to the articles array
     });
-  }
-
-  goToArticle(articleId: number) {
-    this.router.navigate(['/articles', articleId]); // Adjust route as per your routing configuration
   }
 }

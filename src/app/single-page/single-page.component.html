@@ -2,7 +2,7 @@
     <h1>{{ Article?.title }}</h1>
     <img [src]="'http://localhost:5000/uploads/' + Article.imgSrc" [alt]="Article.altText" />
     <div class="article-content">
-        <h2>What do you need to prepare?</h2>
+        <h2>What do you need to prepare a home-made {{ Article.altText }}?</h2>
         <p>{{ Article?.content }}</p>
     </div>
 </section>
@@ -13,11 +13,15 @@
 
 <section class="related-articles" *ngIf="Article">
     <h3>Read More Articles</h3>
+    <p>We consider all the drivers of change gives you the components you need<br> to change to create a truly happens.</p>
     <div class="related-grid">
         <ng-container *ngFor="let article of articles">
-            <div *ngIf="article._id !== Article?._id" class="related-item" (click)="goToArticle(article._id)">
-                <img [src]="'http://localhost:5000/uploads/' + article.imgSrc" [alt]="article.altText" />
-                <p>{{ article.title }}</p>
+            <div *ngIf="article._id !== Article?._id" class="related-item">
+                <a [routerLink]="['/articles', article._id]" class="related-link" style="text-decoration: none;">
+                    <img [src]="'http://localhost:5000/uploads/' + article.imgSrc" [alt]="article.altText" />
+                    <p>{{ article.date | date:'yyyy-MM-dd AT HH:mm' }}</p>
+                    <h2>{{ article.title }}</h2>
+                </a>
             </div>
         </ng-container>
     </div>
