@@ -96,6 +96,42 @@ app.get('/api/contact', async (req, res) => {
     }
 });
 
+// Delete contact by ID
+app.delete('/api/contact/:id', async (req, res) => {
+    try {
+        const contact = await Contact.findByIdAndDelete(req.params.id);
+        if (!contact) {
+            return res.status(404).json({ message: 'Contact not found' });
+        }
+        res.status(200).json({ message: 'Contact deleted' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// update contact by ID
+app.put('/api/contact/:id', async (req, res) => {
+    try {
+        const { name, email, message, subject, date } = req.body;
+        const updatedContact = {
+            name,
+            email,
+            date,
+            subject,
+            message
+        };
+        const contact = await Contact
+            .findByIdAndUpdate(req.params.id, updatedContact, { new: true });
+        if (!contact) {
+            return res.status(404).json({ message: 'Contact not found' });
+        }
+        res.status(200).json(contact);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+);
+
 // Get all menu items
 app.get('/api/menu', async (req, res) => {
     try {
@@ -276,11 +312,6 @@ app.put('/api/booking/:id', async (req, res) => {
     }
 }
 );
-        
-
-
-
-
 
 // Delete booking by ID
 app.delete('/api/booking/:id', async (req, res) => {

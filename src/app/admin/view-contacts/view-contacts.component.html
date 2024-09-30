@@ -13,8 +13,37 @@
         <p><strong>Subject:</strong> {{ contact.subject }}</p>
         <p><strong>Date:</strong> {{ contact.date | date:'yyyy-MM-dd HH:mm' }}</p>
         <p><strong>Message:</strong> {{ contact.message }}</p>
-        <button (click)="deleteContact(contact._id)">Delete</button>
+        <div class="form-btns">
+          <button (click)="editContact(contact)">Edit</button>
+          <button (click)="deleteContact(contact._id)" type="button">Delete</button>
+        </div>
       </div>
     </li>
   </ul>
+
+  <!-- Modal Backdrop -->
+  <div *ngIf="isEditMode" class="modal-backdrop"></div>
+
+  <!-- Floating Form for Editing -->
+  <div *ngIf="isEditMode" class="update-contact-form">
+    <h2>Edit Contact</h2>
+    <form (ngSubmit)="updateContact()">
+      <label for="name">Name:</label>
+      <input id="name" [(ngModel)]="selectedContact.name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input id="email" [(ngModel)]="selectedContact.email" name="email" required />
+
+      <label for="subject">Subject:</label>
+      <input id="subject" [(ngModel)]="selectedContact.subject" name="subject" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" [(ngModel)]="selectedContact.message" name="message" required></textarea>
+
+      <div class="form-btns">
+        <button type="submit">Save</button>
+        <button type="button" (click)="cancelUpdate()">Cancel</button>
+      </div>
+    </form>
+  </div>
 </div>
