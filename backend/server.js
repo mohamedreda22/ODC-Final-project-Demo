@@ -9,6 +9,7 @@ const User = require('./models/User.js');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const path = require('path');
+const Article = require('../backend/models/Article.js')
 
 const app = express();
 app.use(express.json()); 
@@ -171,7 +172,9 @@ app.post('/api/menu', (req, res) => {
   });
 
   // Serve static files (uploads)
-app.use('/uploads', express.static('uploads'));
+// app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 // Update menu item (admin only)
 app.put('/api/menu/:id', (req, res) => {
@@ -321,6 +324,103 @@ app.delete('/api/booking/:id', async (req, res) => {
             return res.status(404).json({ message: 'Booking not found' });
         }
         res.status(200).json({ message: 'Booking deleted' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+// Add new article (with optional image upload)
+app.post('/api/articles', (req, res) => {
+    console.log('Request body:', req.body); // Log request body
+    console.log('Uploaded file:', req.file); // Log uploaded file
+        upload(req, res, async (err) => {
+        if (err) {
+            return res.status(400).json({ message: err });
+        }
+
+        const { title, altText, content, date, category } = req.body;
+
+        const newArticle = new Article({
+            title,
+            imgSrc: req.file ? req.file.filename : null, // Save filename if uploaded
+            altText,
+            content,
+            date,
+            category
+        });
+
+        try {
+            const savedArticle = await newArticle.save();
+            res.status(201).json(savedArticle);
+        } catch (error) {
+            res.status(400).json({ message: error.message });
+        }
+    });
+});
+
+// Get all articles
+app.get('/api/articles', async (req, res) => {
+    try {
+        const articles = await Article.find();
+        res.status(200).json(articles);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Get article by ID
+app.get('/api/articles/:id', async (req, res) => {
+    try {
+        const article = await Article.findById(req.params.id);
+        if (!article) {
+            return res.status(404).json({ message: 'Article not found' });
+        }
+        res.status(200).json(article);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Update article (with optional image upload)
+app.put('/api/articles/:id', (req, res) => {
+    upload(req, res, async (err) => {
+        if (err) {
+            return res.status(400).json({ message: err });
+        }
+
+        const { title, altText, content, date, category } = req.body;
+        const updatedData = {
+            title,
+            altText,
+            content,
+            date,
+            category,
+        };
+
+        // Update imgSrc only if a new image is uploaded
+        if (req.file) {
+            updatedData.imgSrc = req.file.filename;
+        }
+
+        try {
+            const updatedArticle = await Article.findByIdAndUpdate(req.params.id, updatedData, { new: true });
+            if (!updatedArticle) {
+                return res.status(404).json({ message: 'Article not found' });
+            }
+            res.status(200).json(updatedArticle);
+        } catch (error) {
+            res.status(400).json({ message: error.message });
+        }
+    });
+});
+
+// Delete article by ID
+app.delete('/api/articles/:id', async (req, res) => {
+    try {
+        const result = await Article.findByIdAndDelete(req.params.id);
+        if (!result) {
+            return res.status(404).json({ message: 'Article not found' });
+        }
+        res.status(200).json({ message: 'Article deleted' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

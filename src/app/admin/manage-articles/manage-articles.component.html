@@ -1,0 +1,50 @@
+<div class="admin-articles-container">
+  <h1>Manage Articles</h1>
+
+  <button (click)="toggleForm()" class="toggle-form-button">
+    {{ showForm ? 'Cancel' : 'Add Article' }}
+  </button>
+
+  <div *ngIf="showForm" class="fullscreen-form-overlay">
+    <form (ngSubmit)="addArticle()" class="add-article-form" enctype="multipart/form-data">
+      <input type="text" [(ngModel)]="newArticle.title" name="articleTitle" placeholder="Article Title" required />
+      
+      <input type="file" name="image" (change)="onFileSelected($event)" accept="image/*" required />
+      
+      <input type="text" [(ngModel)]="newArticle.altText" name="articleAltText" placeholder="Alt Text" required />
+      <textarea [(ngModel)]="newArticle.content" name="articleContent" placeholder="Content" required></textarea>
+      <input type="date" [(ngModel)]="newArticle.date" name="articleDate" required />
+      <select [(ngModel)]="newArticle.category" name="category" required>
+        <option value="">Select Category</option>
+        <option *ngFor="let category of categories" [value]="category.name">
+          {{ category.name }}
+        </option>
+      </select>
+
+      <div class="form-btns">
+        <button type="submit">Add Article</button>
+        <button type="button" (click)="toggleForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="articles.length === 0" class="no-articles">
+    <p>No articles available.</p>
+  </div>
+
+  <ul *ngIf="articles.length > 0">
+    <li *ngFor="let article of articles">
+      <div class="article-card">
+        <img [src]="'http://localhost:5000/uploads/' + article.imgSrc" [alt]="article.altText" />
+        <p><strong>Title:</strong> {{ article.title }}</p>
+        <p><strong>Content:</strong> {{ article.content }}</p>
+        <p><strong>Date:</strong> {{ article.date | date:'yyyy-MM-dd AT HH:mm' }}</p>
+        <p><strong>Category:</strong> {{ article.category }}</p>
+        <div class="form-btns">
+          <button (click)="deleteArticle(article._id)" type="button">Delete</button>
+          <button (click)="editArticle(article._id)">Edit</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

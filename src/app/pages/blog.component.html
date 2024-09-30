@@ -9,7 +9,7 @@
       <a [routerLink]="['/articles', article.id]" style="text-decoration: none;">
         <img [src]="article.imgSrc" [alt]="article.altText">
         <div class="texting">
-          <p>{{ article.date }}</p>
+          <p>{{ article.date | date:'yyyy-MM-dd At HH:mm' }}</p>
           <h2>{{ article.title }}</h2>
         </div>
       </a>

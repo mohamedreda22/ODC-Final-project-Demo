@@ -15,6 +15,7 @@ import { ViewContactsComponent } from './admin/view-contacts/view-contacts.compo
 import { ViewBookingsComponent } from './admin/view-bookings/view-bookings.component';
 import { ManageMenuItemsComponent } from './admin/manage-menu-items/manage-menu-items.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
+import { ManageArticlesComponent } from './admin/manage-articles/manage-articles.component';
 
 export const routes: Routes = [
     {
@@ -68,6 +69,10 @@ export const routes: Routes = [
         path: 'adminDashboard/contacts', 
         component: ViewContactsComponent
     },{
+        path : 'adminDashboard/articles',
+        component : ManageArticlesComponent
+    }
+    ,{
         path : "register",
         component : RegisterComponent
     }
