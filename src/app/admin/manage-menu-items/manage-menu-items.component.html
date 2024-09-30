@@ -5,20 +5,24 @@
     {{ showForm ? 'Cancel' : 'Add Menu Item' }}
   </button>
 
-  <form *ngIf="showForm" (submit)="addMenuItem()" class="add-menu-item-form">
-    <input type="text" [(ngModel)]="newItem.name" name="itemName" placeholder="Item Name" required />
-    <input type="text" [(ngModel)]="newItem.description" name="itemDescription" placeholder="Description" required />
-    <input type="number" [(ngModel)]="newItem.price" name="itemPrice" placeholder="Price" required min="0" />
-    <select [(ngModel)]="newItem.category" name="category" required>
-      <option value="">Select Category</option>
-      <option *ngFor="let category of categories" [value]="category.id">
+  <div *ngIf="showForm" class="fullscreen-form-overlay">
+    <form (submit)="addMenuItem()" class="add-menu-item-form">
+      <input type="text" [(ngModel)]="newItem.name" name="itemName" placeholder="Item Name" required />
+      <input type="text" [(ngModel)]="newItem.description" name="itemDescription" placeholder="Description" required />
+      <input type="number" [(ngModel)]="newItem.price" name="itemPrice" placeholder="Price" required min="0" />
+      <select [(ngModel)]="newItem.category" name="category" required>
+        <option value="">Select Category</option>
+        <option *ngFor="let category of categories" [value]="category.name">
           {{ category.name }}
-      </option>
-    </select>
-    
-    <input type="file" (change)="onFileSelected($event)" required />
-    <button type="submit">Add Menu Item</button>
-  </form>
+        </option>
+      </select>
+      
+      <input type="file" (change)="onFileSelected($event)" required />
+      <div class="form-btns">
+      <button type="submit">Add Menu Item</button>
+      <button type="button" (click)="toggleForm()">Cancel</button></div>
+    </form>
+  </div>
 
   <div *ngIf="menuItems.length === 0" class="no-menu-items">
     <p>No menu items available.</p>

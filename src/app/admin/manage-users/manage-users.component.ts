@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ManageUsersComponent {
   users: any[] = []; // List of users
-  newUser = { username: '', password: '' }; // New user object
+  newUser = { _id:'', username: '', password: ''}; // New user object
   token: string | null = localStorage.getItem('token'); // JWT token
 
   constructor(private http: HttpClient) {
@@ -38,7 +38,7 @@ export class ManageUsersComponent {
     this.http.post('http://localhost:5000/api/register', this.newUser, { headers }).subscribe(
       () => {
         this.loadUsers(); // Reload users after adding new one
-        this.newUser = { username: '', password: '' }; // Reset new user form
+        this.newUser = { _id:'', username: '', password: '' }; // Reset new user form
       },
       (error) => {
         console.error('Error adding user', error);
@@ -47,11 +47,11 @@ export class ManageUsersComponent {
   }
 
   // Delete a user by ID
-  deleteUser(id: string) {
+  deleteUser(_id: string) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    this.http.delete(`http://localhost:5000/api/users/${id}`, { headers }).subscribe(
+    this.http.delete(`http://localhost:5000/api/users/${_id}`, { headers }).subscribe(
       () => {
-        this.loadUsers(); // Reload users after deletion
+        this.loadUsers(); 
       },
       (error) => {
         console.error('Error deleting user', error);

@@ -184,22 +184,6 @@ app.delete('/api/menu/:id', async (req, res) => {
     }
 });
 
-/* app.delete('/api/menu/:id', async (req, res) => {
-    console.log(`Attempting to delete item with ID: ${req.params.id}`);
-    try {
-        const item = await MenuItem.findById(req.params.id);
-        if (!item) {
-            return res.status(404).json({ message: 'Item not found' });
-        }
-        await item.remove();
-        console.log('Item deleted successfully');
-        res.status(200).json({ message: 'Item deleted' });
-    } catch (error) {
-        console.error('Error deleting item:', error);
-        res.status(500).json({ message: error.message });
-    }
-}); */
-
 // Register route
 app.post('/api/register', async (req, res) => {
     const { username, password } = req.body;
@@ -241,6 +225,20 @@ app.get('/api/users', async (req, res) => {
     }
 });
 
+// Delete user by ID
+app.delete('/api/users/:id', async (req, res) => {
+    try {
+        const user
+            = await User.findByIdAndDelete(req.params.id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json({ message: 'User deleted' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+);
 // Logout
 app.post('/api/logout', (req, res) => {
     res.json({ message: 'Logged out successfully' });

@@ -29,6 +29,7 @@ export class ManageMenuItemsComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
+    // console.log('Selected file:', this.selectedFile);
   }
 
   loadCategories(): void {
@@ -66,6 +67,7 @@ export class ManageMenuItemsComponent implements OnInit {
   }
 
   addMenuItem() {
+  //  console.log('Menu Item before submission:', this.newItem); // Log the current state of newItem
     const token = localStorage.getItem('token');
 
     if (token) {
@@ -75,6 +77,11 @@ export class ManageMenuItemsComponent implements OnInit {
       formData.append('description', this.newItem.description);
       formData.append('price', this.newItem.price.toString());
       formData.append('category', this.newItem.category);
+      if (!this.newItem.name || !this.newItem.description || !this.newItem.category) {
+        console.error('All fields are required.');
+        return;
+    }
+    
       if (this.selectedFile) {
         formData.append('image', this.selectedFile, this.selectedFile.name);
       }
@@ -90,6 +97,7 @@ export class ManageMenuItemsComponent implements OnInit {
           this.loadMenuItems();
           this.resetForm();
           this.selectedFile = null;
+          this.showForm = false;
         },
         (error) => {
           console.error('Error saving menu item', error);
@@ -119,16 +127,4 @@ export class ManageMenuItemsComponent implements OnInit {
       }
     );
   }
-  
-  
-/*   deleteMenuItem(_id: string) {
-    this.http.delete(`http://localhost:5000/api/menu/${_id}`).subscribe(
-      () => {
-        this.loadMenuItems();
-      },
-      (error) => {
-        console.error('Error deleting menu item', error);
-      }
-    );
-  } */
 }
