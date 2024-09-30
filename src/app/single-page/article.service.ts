@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Article } from './article.model'; // Define your article interface or model
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Article } from './article.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class ArticleService {
-  private articles: Article[] = [
-    // your articles array
-  ];
+  private apiUrl = 'http://localhost:5000/api/articles';
 
-  getArticleById(id: number): Article | undefined {
-    return this.articles.find(article => article.id === id);
+  constructor(private http: HttpClient) {}
+
+  getArticles(): Observable<Article[]> {
+    return this.http.get<Article[]>(this.apiUrl);
   }
 
-  getArticles(): Article[] {
-    return this.articles;
+  getArticleById(id: string): Observable<Article> {
+    return this.http.get<Article>(`${this.apiUrl}/${id}`);
   }
 }

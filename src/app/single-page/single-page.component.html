@@ -1,9 +1,9 @@
-<section *ngIf="mainArticle; else notFound" class="article-section">
-    <h1>{{ mainArticle?.title }}</h1>
-    <img [src]="mainArticle?.imgSrc" [alt]="mainArticle?.altText">
+<section *ngIf="Article; else notFound" class="article-section">
+    <h1>{{ Article?.title }}</h1>
+    <img [src]="'http://localhost:5000/uploads/' + Article.imgSrc" [alt]="Article.altText" />
     <div class="article-content">
         <h2>What do you need to prepare?</h2>
-        <p>{{ mainArticle?.content }}</p>
+        <p>{{ Article?.content }}</p>
     </div>
 </section>
 
@@ -11,15 +11,14 @@
     <p>Article not found. Please check the URL or return to the main page.</p>
 </ng-template>
 
-<section class="related-articles" *ngIf="mainArticle">
+<section class="related-articles" *ngIf="Article">
     <h3>Read More Articles</h3>
     <div class="related-grid">
-        @for (article of articles ; track $index) {
-
-            <div *ngIf="article.id !== articleId" class="related-item" (click)="goToArticle(article.id)">
-                <img [src]="article.imgSrc" [alt]="article.altText">
+        <ng-container *ngFor="let article of articles">
+            <div *ngIf="article._id !== Article?._id" class="related-item" (click)="goToArticle(article._id)">
+                <img [src]="'http://localhost:5000/uploads/' + article.imgSrc" [alt]="article.altText" />
                 <p>{{ article.title }}</p>
             </div>
-        }
+        </ng-container>
     </div>
 </section>

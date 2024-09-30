@@ -6,8 +6,8 @@
 
   <div class="blog-grid">
     <article class="blog-item" *ngFor="let article of articles">
-      <a [routerLink]="['/articles', article.id]" style="text-decoration: none;">
-        <img [src]="article.imgSrc" [alt]="article.altText">
+      <a [routerLink]="['/articles', article._id]" style="text-decoration: none;">
+        <img [src]="'http://localhost:5000/uploads/' + article.imgSrc" [alt]="article.altText" />
         <div class="texting">
           <p>{{ article.date | date:'yyyy-MM-dd At HH:mm' }}</p>
           <h2>{{ article.title }}</h2>

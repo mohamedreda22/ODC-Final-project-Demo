@@ -5,7 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 
 // Define the interface for an article
 interface Article {
-  id: number;       
+  _id: number;       
   title: string;
   imgSrc: string;
   altText: string;
