@@ -1,7 +1,7 @@
 # Bistro Bliss
 ## Video demo
 
-[![Watch the video](<Screenshot 2024-10-01 152815.png>){: width="200"}](https://www.youtube.com/watch?v=Q6_2X1J8Z1A)
+[![Watch the video](<Screenshot 2024-10-01 152815.png>)](https://www.youtube.com/watch?v=Q6_2X1J8Z1A)
 
 ## Screenshots 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
