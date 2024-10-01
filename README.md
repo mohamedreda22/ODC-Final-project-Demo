@@ -4,25 +4,26 @@
 [![Watch the video](<Screenshot 2024-10-01 152815.png>){: width="200"}](https://www.youtube.com/watch?v=Q6_2X1J8Z1A)
 
 ## Screenshots 
-
-<img src="Screenshot 2024-10-01 152815.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152819.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152823.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152834.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152840.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152844.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152905.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152910.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152916.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152923.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152938.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152946.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152950.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152955.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 152959.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 153003.png" alt="alt text" width="300"/>
-<img src="Screenshot 2024-10-01 153013.png" alt="alt text" width="300"/>
-
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <img src="Screenshot 2024-10-01 152815.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152819.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152823.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152834.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152840.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152844.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152905.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152910.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152916.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152923.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152938.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152946.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152950.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152955.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 152959.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 153003.png" alt="alt text" width="300"/>
+    <img src="Screenshot 2024-10-01 153013.png" alt="alt text" width="300"/>
+</div>
+</div>
 
 ## Full-Stack Project Overview
 
