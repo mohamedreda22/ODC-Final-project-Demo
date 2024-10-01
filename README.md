@@ -1,27 +1,109 @@
-# DemoFrontFinal
+# Bistro 
+## Video demon
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.3.
+[![Watch the video](<Screenshot 2024-10-01 153013.png>)](https://www.youtube.com/watch?v=Q6_2X1J8Z1A)
 
-## Development server
+## Screenshots 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![alt text](<Screenshot 2024-10-01 153013.png>) ![alt text](<Screenshot 2024-10-01 153003.png>) ![alt text](<Screenshot 2024-10-01 152959.png>) ![alt text](<Screenshot 2024-10-01 152955.png>) ![alt text](<Screenshot 2024-10-01 152950.png>) ![alt text](<Screenshot 2024-10-01 152946.png>) ![alt text](<Screenshot 2024-10-01 152938.png>) ![alt text](<Screenshot 2024-10-01 152923.png>) ![alt text](<Screenshot 2024-10-01 152916.png>) ![alt text](<Screenshot 2024-10-01 152910.png>) ![alt text](<Screenshot 2024-10-01 152905.png>) ![alt text](<Screenshot 2024-10-01 152844.png>) ![alt text](<Screenshot 2024-10-01 152840.png>) ![alt text](<Screenshot 2024-10-01 152834.png>) ![alt text](<Screenshot 2024-10-01 152823.png>) ![alt text](<Screenshot 2024-10-01 152819.png>) ![alt text](<Screenshot 2024-10-01 152815.png>)
 
-## Code scaffolding
+## Full-Stack Project Overview
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This project is a full-stack web application built using Angular, HTML, CSS, and TypeScript for the front-end, and Node.js, Express, and MongoDB for the back-end.
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Front-End**: Developed with Angular, HTML, CSS, and TypeScript.
+- **Back-End**: Built using Node.js, Express, and MongoDB.
+- **RESTful API**: Implements a RESTful API for CRUD operations.
+- **Responsive Design**: Ensures compatibility across various devices and screen sizes.
+- **Authentication**: Includes user authentication and authorization.
 
-## Running unit tests
+## Prerequisites
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Before you begin, ensure you have met the following requirements:
+- Node.js and npm installed
+- Angular CLI installed
+- MongoDB installed and running
 
-## Running end-to-end tests
+## Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/mohamedreda22/ODC-Final-project-Demo.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd ODC-Final-project-Demo
+    ```
+3. Install the dependencies for the front-end:
+    ```bash
+    cd frontend
+    npm install
+    ```
+4. Install the dependencies for the back-end:
+    ```bash
+    cd ../backend
+    npm install
+    ```
 
-## Further help
+## Running the Application
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Start the MongoDB server:
+    ```bash
+    mongod
+    ```
+2. Start the back-end server:
+    ```bash
+    cd backend
+    nodemon server.js
+    ```
+3. Start the front-end server:
+    ```bash
+    cd ../frontend
+    ng serve
+    ```
+4. Open your browser and navigate to `http://localhost:4200/`.
+
+## API Endpoints
+
+- `GET /api/items`: Retrieve all items
+- `POST /api/items`: Create a new item
+- `GET /api/items/:id`: Retrieve a specific item by ID
+- `PUT /api/items/:id`: Update a specific item by ID
+- `DELETE /api/items/:id`: Delete a specific item by ID
+- All back-end APIs working with "http://localhost:5000/api/document"
+document could be [
+                    articles
+                    booking
+                    contacts
+                    menu
+                    users
+                    ]
+
+## Contributing
+
+To contribute to this project, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch:
+    ```bash
+    git checkout -b feature-branch
+    ```
+3. Make your changes and commit them:
+    ```bash
+    git commit -m 'Add some feature'
+    ```
+4. Push to the branch:
+    ```bash
+    git push origin feature-branch
+    ```
+5. Create a pull request.
+
+## Contact
+
+If you want to contact me, you can reach me at [mohamedreda.dev@gmail.com](mailto:mohamedreda.dev@gmail.com).
+
+## Copy Rights
+
+This project is graduation project from my training program with ODC & AMIT
