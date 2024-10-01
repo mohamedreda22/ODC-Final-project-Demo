@@ -22,6 +22,10 @@
 </div>
 </div>
 
+// video drive link with image preview
+[![Watch the video](https://drive.google.com/file/d/1Q8ts3rjUIa9jiqxWhSwr7LVgOeMyvk_8/view?usp=sharing)
+
+
 ## Full-Stack Project Overview
 
 This project is a full-stack web application built using Angular, HTML, CSS, and TypeScript for the front-end, and Node.js, Express, and MongoDB for the back-end.
