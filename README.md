@@ -1,10 +1,11 @@
 # Bistro Bliss
 ## Video Demo
-- **Watch the video demo via google drive**:
-[![Watch the video](https://drive.google.com/file/d/1Q8ts3rjUIa9jiqxWhSwr7LVgOeMyvk_8/view?usp=sharing)]
+- **Watch the video demo via Google Drive**:  
+[![Watch the video](![drive](image.png))](https://drive.google.com/file/d/1Q8ts3rjUIa9jiqxWhSwr7LVgOeMyvk_8/view?usp=sharing)
 
-- **View the Project via LinkedIn**
-[![View the project](https://lnkd.in/dPf-rqfr)]
+- **View the Project via LinkedIn**:  
+[![View the project](https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png)](https://www.linkedin.com/in/dPf-rqfr)
+
 
 ## Screenshots 
 <div style="display: flex; flex-wrap: wrap; gap: 30px;">
