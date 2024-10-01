@@ -4,7 +4,7 @@
 [![Watch the video](<Screenshot 2024-10-01 152815.png>)](https://www.youtube.com/watch?v=Q6_2X1J8Z1A)
 
 ## Screenshots 
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; gap: 30px;">
     <img src="Screenshot 2024-10-01 152815.png" alt="alt text" width="300"/>
     <img src="Screenshot 2024-10-01 152819.png" alt="alt text" width="300"/>
     <img src="Screenshot 2024-10-01 152823.png" alt="alt text" width="300"/>
