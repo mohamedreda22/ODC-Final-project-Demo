@@ -22,7 +22,6 @@
 </div>
 </div>
 
-// video drive link with image preview
 [![Watch the video](https://drive.google.com/file/d/1Q8ts3rjUIa9jiqxWhSwr7LVgOeMyvk_8/view?usp=sharing)
 
 
