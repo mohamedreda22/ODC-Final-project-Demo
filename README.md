@@ -9,7 +9,7 @@
 
 - **View the Project via LinkedIn**
 <div style="display: flex; flex-direction: row; align-items: center;">
-  <a href="https://www.linkedin.com/in/dPf-rqfr">
+  <a href="https://lnkd.in/dPf-rqfr">
     <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="View the project" width="100" style="margin-right: 10px;"/>
   </a>
 </div>
