@@ -1,4 +1,10 @@
 # Bistro Bliss
+## Video Demo
+- **Watch the video demo via google drive**:
+[![Watch the video](https://drive.google.com/file/d/1Q8ts3rjUIa9jiqxWhSwr7LVgOeMyvk_8/view?usp=sharing)]
+
+- **View the Project via LinkedIn**
+[![View the project](https://lnkd.in/dPf-rqfr)]
 
 ## Screenshots 
 <div style="display: flex; flex-wrap: wrap; gap: 30px;">
@@ -20,10 +26,6 @@
     <img src="Screenshot 2024-10-01 153003.png" alt="alt text" width="300"/>
     <img src="Screenshot 2024-10-01 153013.png" alt="alt text" width="300"/>
 </div>
-</div>
-
-[![Watch the video](https://drive.google.com/file/d/1Q8ts3rjUIa9jiqxWhSwr7LVgOeMyvk_8/view?usp=sharing)
-
 
 ## Full-Stack Project Overview
 
