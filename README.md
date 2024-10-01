@@ -3,7 +3,7 @@
 - **Watch the video demo via Google Drive**:  
 <div style="display: flex; flex-direction: row; align-items: center;">
   <a href="https://drive.google.com/file/d/1Q8ts3rjUIa9jiqxWhSwr7LVgOeMyvk_8/view?usp=sharing">
-    <img src="image.png" alt="Watch the video" width="100" style="vertical-align: middle;/>
+    <img src="image.png" alt="Watch the video" width="100" style="vertical-align: middle;"/>
   </a>
 </div>
 
