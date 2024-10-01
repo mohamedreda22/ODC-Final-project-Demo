@@ -1,17 +1,17 @@
 # Bistro Bliss
 ## Video Demo
 - **Watch the video demo via Google Drive**:  
-<div style="display: flex; align-items: center;">
+<div style="display: flex; flex-direction: row; align-items: center;">
   <a href="https://drive.google.com/file/d/1Q8ts3rjUIa9jiqxWhSwr7LVgOeMyvk_8/view?usp=sharing">
     <img src="image.png" alt="Watch the video" width="100" style="vertical-align: middle;/>
   </a>
 </div>
 
-<div style="display: flex; align-items: center;">
+- **View the Project via LinkedIn**
+<div style="display: flex; flex-direction: row; align-items: center;">
   <a href="https://www.linkedin.com/in/dPf-rqfr">
     <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="View the project" width="100" style="margin-right: 10px;"/>
   </a>
-  <span style="font-size: 18px;">**View the Project via LinkedIn**</span>
 </div>
 
 
